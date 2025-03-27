@@ -1,10 +1,11 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
+    --background: 210 40% 98%;
     --foreground: 222.2 84% 4.9%;
 
     --card: 0 0% 100%;
@@ -13,7 +14,7 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
 
-    --primary: 222.2 47.4% 11.2%;
+    --primary: 217 75% 47%;
     --primary-foreground: 210 40% 98%;
 
     --secondary: 210 40% 96.1%;
@@ -35,19 +36,12 @@
     --radius: 0.5rem;
 
     --sidebar-background: 0 0% 98%;
-
     --sidebar-foreground: 240 5.3% 26.1%;
-
     --sidebar-primary: 240 5.9% 10%;
-
     --sidebar-primary-foreground: 0 0% 98%;
-
     --sidebar-accent: 240 4.8% 95.9%;
-
     --sidebar-accent-foreground: 240 5.9% 10%;
-
     --sidebar-border: 220 13% 91%;
-
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
@@ -96,6 +90,88 @@
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  .glass-card {
+    @apply backdrop-blur-md bg-white/80 border border-white/20 shadow-sm;
+  }
+
+  .section-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24;
+  }
+
+  .section-title {
+    @apply text-3xl sm:text-4xl font-semibold tracking-tight mb-3;
+  }
+
+  .section-subtitle {
+    @apply text-lg text-pet-slate mb-10 max-w-3xl;
+  }
+
+  .stagger-animation > * {
+    @apply opacity-0;
+  }
+
+  .stagger-animation > *:nth-child(1) {
+    animation: fade-in-up 0.5s ease-out 0.1s forwards;
+  }
+
+  .stagger-animation > *:nth-child(2) {
+    animation: fade-in-up 0.5s ease-out 0.2s forwards;
+  }
+
+  .stagger-animation > *:nth-child(3) {
+    animation: fade-in-up 0.5s ease-out 0.3s forwards;
+  }
+
+  .stagger-animation > *:nth-child(4) {
+    animation: fade-in-up 0.5s ease-out 0.4s forwards;
+  }
+
+  .stagger-animation > *:nth-child(5) {
+    animation: fade-in-up 0.5s ease-out 0.5s forwards;
+  }
+
+  .stagger-animation > *:nth-child(6) {
+    animation: fade-in-up 0.5s ease-out 0.6s forwards;
+  }
+
+  .scroll-reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+
+  .scroll-reveal.revealed {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @keyframes fade-in {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+
+  @keyframes fade-in-up {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes slide-in-right {
+    0% { opacity: 0; transform: translateX(20px); }
+    100% { opacity: 1; transform: translateX(0); }
+  }
+
+  @keyframes slide-in-left {
+    0% { opacity: 0; transform: translateX(-20px); }
+    100% { opacity: 1; transform: translateX(0); }
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
   }
 }
